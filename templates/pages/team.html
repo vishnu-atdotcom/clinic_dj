@@ -1,0 +1,36 @@
+{% extends "partials/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container-xxl py-5">
+    <div class="container">
+        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
+            <p class="d-inline-block border rounded-pill py-1 px-4">Doctors</p>
+            <h1>Our Experienced Doctors</h1>
+        </div>
+        <div class="row g-4">
+            {% for doctor in doctors %}
+            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.{{ forloop.counter0 }}s">
+                <div class="team-item position-relative rounded overflow-hidden">
+                    <div class="overflow-hidden">
+                        <!-- Dynamically load the doctor's image -->
+                    
+                        <img class="img-fluid" src="{{ doctor.image.url }}" alt="{{ doctor.doctor_name }}">
+                    </div>
+                    <div class="team-text bg-light text-center p-4">
+                        <!-- Dynamically display the doctor's name and department -->
+                        <h5>{{ doctor.name }}</h5>
+                        <p class="text-primary">{{ doctor.department }}</p>
+                        <div class="team-social text-center">
+                            <a class="btn btn-square" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-square" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-square" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
